@@ -140,7 +140,7 @@ public class HomeActivity extends Activity implements OnRestResponseHandler, OnB
 
 	public void configureActionBar () {
 		super.getActionBar().setDisplayHomeAsUpEnabled(false);
-		super.getActionBar().setDisplayShowHomeEnabled(true);
+		super.getActionBar().setDisplayShowHomeEnabled(false);
 
 		if (this.mData.size() == 1) {
 			final NodeCategory node = this.mData.get(0);

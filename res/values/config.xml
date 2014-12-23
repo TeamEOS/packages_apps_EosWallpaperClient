@@ -7,7 +7,7 @@
     </string>
 
     <!-- Configure The External Storage Directory. Don't include sdcard in the path -->
-    <string name="config_external_storage_folder">FolderName/Wallpapers</string>
+    <string name="config_external_storage_folder">EosWallpaper/Wallpapers</string>
 
 
     <!-- Enable The Image Tags (i.e. Each Image Has A Name) -->
@@ -33,6 +33,6 @@
 
 
     <!-- App Name -->
-    <string name="app_name">Wallpaper Manager</string>
+    <string name="app_name">Eos Art</string>
 
 </resources>

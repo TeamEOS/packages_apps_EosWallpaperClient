@@ -64,7 +64,6 @@ public class WallpaperFragment extends Fragment {
 
 		final ActionBar ab = (super.getActivity()).getActionBar();
 		if (ab != null) {
-			ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 			ab.setDisplayHomeAsUpEnabled(true);
 			ab.setDisplayShowHomeEnabled(false);
 			ab.setDisplayShowTitleEnabled(true);

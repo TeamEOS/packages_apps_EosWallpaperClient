@@ -11,7 +11,7 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     wpm_image-loader \
     wpm_image-loader-sources
 
-LOCAL_PACKAGE_NAME := WallpaperManager
+LOCAL_PACKAGE_NAME := EOSWallpaperClient
 include $(BUILD_PACKAGE)
 
 include $(CLEAR_VARS)
