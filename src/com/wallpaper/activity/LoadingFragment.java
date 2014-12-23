@@ -4,9 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.actionbarsherlock.app.SherlockFragment;
+import android.app.Fragment;
 
-public class LoadingFragment extends SherlockFragment {
+public class LoadingFragment extends Fragment {
 
 	public static final String TAG = "RetryFragment";
 

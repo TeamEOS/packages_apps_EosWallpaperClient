@@ -16,12 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
-import com.actionbarsherlock.view.MenuItem;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
@@ -32,7 +32,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
 
-public class WallpaperFragment extends SherlockFragment {
+public class WallpaperFragment extends Fragment {
 
 	private final String TAG = "WallpaperFragment";
 	public static final String FRAGMENT_TAG = "WallpaperFragment";
@@ -62,7 +62,7 @@ public class WallpaperFragment extends SherlockFragment {
 		super.onActivityCreated(savedInstanceState);
 		this.mNode = (NodeWallpaper) super.getArguments().getSerializable(BUNDLE_TAG);
 
-		final ActionBar ab = ((SherlockFragmentActivity) super.getActivity()).getSupportActionBar();
+		final ActionBar ab = (super.getActivity()).getActionBar();
 		if (ab != null) {
 			ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 			ab.setDisplayHomeAsUpEnabled(true);

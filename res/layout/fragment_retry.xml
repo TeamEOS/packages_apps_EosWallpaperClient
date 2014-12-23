@@ -9,13 +9,13 @@
             android:id="@+id/text_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Something went wrong!"
+            android:text="@string/fail"
             android:textSize="20dip"/>
 
     <Button
             android:id="@+id/button_retry"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Retry"/>
+            android:text="@string/retry"/>
 
 </LinearLayout>

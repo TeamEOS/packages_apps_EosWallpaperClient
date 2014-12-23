@@ -29,7 +29,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.ImageView;
 import android.widget.Scroller;
-import com.wallpaper.activity.BuildConfig;
 
 public class PhotoView extends ImageView implements VersionedGestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
 

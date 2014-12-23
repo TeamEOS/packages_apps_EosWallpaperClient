@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView.OnItemLongClickListener;
-import com.actionbarsherlock.app.SherlockFragment;
+import android.app.Fragment;
 import com.wallpaper.activity.R;
 import com.wallpaper.core.Adapter.OnGetViewListener;
 import com.wallpaper.core.com.jess.ui.TwoWayAdapterView.OnItemClickListener;
@@ -13,7 +13,7 @@ import com.wallpaper.core.com.jess.ui.TwoWayGridView;
 
 import java.util.ArrayList;
 
-public abstract class GridFragment extends SherlockFragment implements OnItemLongClickListener, OnGetViewListener, OnItemClickListener {
+public abstract class GridFragment extends Fragment implements OnItemLongClickListener, OnGetViewListener, OnItemClickListener {
 
 	private TwoWayGridView mGridView;
 	private View mView;

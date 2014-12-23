@@ -2,9 +2,9 @@ package com.wallpaper.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
+import android.app.Activity;
 
-public class LauncherActivity extends SherlockFragmentActivity {
+public class LauncherActivity extends Activity {
 
 	@Override
 	public void onCreate (Bundle savedInstanceState) {

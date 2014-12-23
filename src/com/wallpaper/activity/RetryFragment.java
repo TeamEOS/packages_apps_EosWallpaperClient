@@ -7,9 +7,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.actionbarsherlock.app.SherlockFragment;
+import android.app.Fragment;
 
-public class RetryFragment extends SherlockFragment implements OnClickListener {
+public class RetryFragment extends Fragment implements OnClickListener {
 
 	public static final String TAG = "RetryFragment";
 	private static final String KEY_MESSAGE = "";

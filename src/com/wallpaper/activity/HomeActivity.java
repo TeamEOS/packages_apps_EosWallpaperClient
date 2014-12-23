@@ -6,9 +6,9 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentManager.OnBackStackChangedListener;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentManager;
+import android.app.FragmentManager.OnBackStackChangedListener;
+import android.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +16,11 @@ import android.view.ViewGroup;
 import android.webkit.URLUtil;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.actionbarsherlock.app.ActionBar;
-import com.actionbarsherlock.app.SherlockFragment;
-import com.actionbarsherlock.app.SherlockFragmentActivity;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
+import android.app.ActionBar;
+import android.app.Fragment;
+import android.app.Activity;
+import android.view.Menu;
+import android.view.MenuItem;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -34,7 +34,7 @@ import com.wallpaper.core.RestClientHandler.OnRestResponseHandler;
 
 import java.util.ArrayList;
 
-public class HomeActivity extends SherlockFragmentActivity implements OnRestResponseHandler, OnBackStackChangedListener, OnGetViewListener, OnFragmentClickListener {
+public class HomeActivity extends Activity implements OnRestResponseHandler, OnBackStackChangedListener, OnGetViewListener, OnFragmentClickListener {
 
 	private final String TAG = "HomeActivity";
 	private final String KEY_LIST_DATA = "list_cache";
@@ -49,7 +49,7 @@ public class HomeActivity extends SherlockFragmentActivity implements OnRestResp
 	@Override
 	public void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		super.getSupportFragmentManager().addOnBackStackChangedListener(this);
+		super.getFragmentManager().addOnBackStackChangedListener(this);
 		super.setContentView(R.layout.activity_home);
 		this.loadData(savedInstanceState);
 
@@ -139,28 +139,28 @@ public class HomeActivity extends SherlockFragmentActivity implements OnRestResp
 
 
 	public void configureActionBar () {
-		super.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-		super.getSupportActionBar().setDisplayShowHomeEnabled(true);
+		super.getActionBar().setDisplayHomeAsUpEnabled(false);
+		super.getActionBar().setDisplayShowHomeEnabled(true);
 
 		if (this.mData.size() == 1) {
 			final NodeCategory node = this.mData.get(0);
-			super.getSupportActionBar().setDisplayShowTitleEnabled(true);
-			super.getSupportActionBar().setTitle(node.name);
+			super.getActionBar().setDisplayShowTitleEnabled(true);
+			super.getActionBar().setTitle(node.name);
 			this.onCategorySelected(node);
 		} else {
-			super.getSupportActionBar().setDisplayShowTitleEnabled(false);
-			super.getSupportActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-			super.getSupportActionBar().setListNavigationCallbacks(new Adapter(this, this, this.mData), this);
+			super.getActionBar().setDisplayShowTitleEnabled(false);
+			super.getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
+			super.getActionBar().setListNavigationCallbacks(new Adapter(this, this, this.mData), this);
 			if (this.mPosition != -1) {
 				this.mIgnoreSelection = true;
-				super.getSupportActionBar().setSelectedNavigationItem(this.mPosition);
+				super.getActionBar().setSelectedNavigationItem(this.mPosition);
 			}
 		}
 	}
 
 
-	public void addFragment (SherlockFragment fragment, String tag, boolean clearStack) {
-		final FragmentManager fm = super.getSupportFragmentManager();
+	public void addFragment (Fragment fragment, String tag, boolean clearStack) {
+		final FragmentManager fm = super.getFragmentManager();
 		final FragmentTransaction transaction = fm.beginTransaction();
 
 		// Clear Back Stack
@@ -202,7 +202,7 @@ public class HomeActivity extends SherlockFragmentActivity implements OnRestResp
 
 	@Override
 	public void onCategorySelected (NodeCategory node) {
-		final SherlockFragment frag = new CategoryFragment();
+		final Fragment frag = new CategoryFragment();
 		final Bundle args = new Bundle();
 		args.putSerializable(CategoryFragment.BUNDLE_TAG, node.wallpaperList);
 		frag.setArguments(args);
@@ -211,7 +211,7 @@ public class HomeActivity extends SherlockFragmentActivity implements OnRestResp
 
 	@Override
 	public void onWallpaperSelected (NodeWallpaper node) {
-		final SherlockFragment frag = new WallpaperFragment();
+		final WallpaperFragment frag = new WallpaperFragment();
 		final Bundle args = new Bundle();
 		args.putSerializable(WallpaperFragment.BUNDLE_TAG, node);
 		frag.setArguments(args);
@@ -230,7 +230,7 @@ public class HomeActivity extends SherlockFragmentActivity implements OnRestResp
 
 	@Override
 	public void onBackStackChanged () {
-		final FragmentManager fm = super.getSupportFragmentManager();
+		final FragmentManager fm = super.getFragmentManager();
 		if (fm.getBackStackEntryCount() == 0) {
 			this.configureActionBar();
 		}
@@ -262,7 +262,7 @@ public class HomeActivity extends SherlockFragmentActivity implements OnRestResp
 	public boolean onOptionsItemSelected (MenuItem item) {
 		switch (item.getItemId()) {
 			case android.R.id.home: {
-				final FragmentManager fm = super.getSupportFragmentManager();
+				final FragmentManager fm = super.getFragmentManager();
 				fm.popBackStack();
 				return true;
 			}
