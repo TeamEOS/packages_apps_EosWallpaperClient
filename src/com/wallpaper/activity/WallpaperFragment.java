@@ -67,6 +67,7 @@ public class WallpaperFragment extends Fragment {
 			ab.setDisplayHomeAsUpEnabled(true);
 			ab.setDisplayShowHomeEnabled(false);
 			ab.setDisplayShowTitleEnabled(false);
+			ab.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
 
 /*
 			final String title = super.getResources().getString(R.string.config_full_screen_wallpaper_title);
@@ -92,7 +93,10 @@ public class WallpaperFragment extends Fragment {
 			@Override
 			public void onLoadingFailed (FailReason failReason) {
 				mImageDrawableSet = false;
-				Toast.makeText(getActivity(), "Image Failed To Load!", Toast.LENGTH_SHORT).show();
+                if (getActivity() != null) {
+                    Toast.makeText(getActivity(), "Image Failed To Load!", Toast.LENGTH_SHORT)
+                            .show();
+                }
 			}
 
 			@Override
