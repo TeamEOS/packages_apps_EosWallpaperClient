@@ -236,16 +236,6 @@ public class HomeActivity extends Activity implements OnRestResponseHandler, OnB
 		}
 	}
 
-
-	private final String HIDE = "Hide Launcher Icon";
-	private final String SHOW = "Show Launcher Icon";
-	private final int HIDE_ID = 0;
-	private final int SHOW_ID = 1;
-
-	private final int FLAG_SHOW = PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
-	private final int FLAG_HIDE = PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
-	private final int DONT_KILL_APP = PackageManager.DONT_KILL_APP;
-
 	@Override
 	public boolean onCreateOptionsMenu (Menu menu) {
 		return super.onCreateOptionsMenu(menu);
@@ -253,83 +243,20 @@ public class HomeActivity extends Activity implements OnRestResponseHandler, OnB
 
 	@Override
 	public boolean onPrepareOptionsMenu (Menu menu) {
-		menu.clear();
-		menu.add(3, 3, 3, ((isShowing()) ? HIDE : SHOW)).setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
-	@Override
-	public boolean onOptionsItemSelected (MenuItem item) {
-		switch (item.getItemId()) {
-			case android.R.id.home: {
-				final FragmentManager fm = super.getFragmentManager();
-				fm.popBackStack();
-				return true;
-			}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home: {
+                final FragmentManager fm = super.getFragmentManager();
+                fm.popBackStack();
+                return true;
+            }
 
-			default: {
-				if (item.getTitle().equals(SHOW)) {
-					Log.i(TAG, "Show");
-					super.showDialog(SHOW_ID);
-					return true;
-				} else if (item.getTitle().equals(HIDE)) {
-					Log.i(TAG, "Hide");
-					super.showDialog(HIDE_ID);
-					return true;
-				} else {
-					return super.onOptionsItemSelected(item);
-				}
-			}
-		}
-	}
-
-	@Override
-	protected Dialog onCreateDialog (int id) {
-		if (id == HIDE_ID) {
-			return (new AlertDialog.Builder(this)).setCancelable(true).setTitle("Hide App Icon").setIcon(android.R.drawable.ic_dialog_alert).setMessage("This option will remove the icon from your app drawer.").setPositiveButton("Remove", new DialogInterface.OnClickListener() {
-				public void onClick (DialogInterface dialog, int which) {
-					hideIcon();
-					dialog.dismiss();
-				}
-			}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-				public void onClick (DialogInterface dialog, int which) {
-					dialog.dismiss();
-				}
-			}).create();
-		} else if (id == SHOW_ID) {
-			return (new AlertDialog.Builder(this)).setCancelable(true).setTitle("Show App Icon").setIcon(android.R.drawable.ic_dialog_alert).setMessage("This option will restore the icon into your app drawer.").setPositiveButton("Show", new DialogInterface.OnClickListener() {
-				public void onClick (DialogInterface dialog, int which) {
-
-					showIcon();
-					dialog.dismiss();
-				}
-			}).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-				public void onClick (DialogInterface dialog, int which) {
-					dialog.dismiss();
-				}
-			}).create();
-		}
-
-		return null;
-	}
-
-	public boolean isShowing () {
-		PackageManager p = super.getPackageManager();
-		return (p.getComponentEnabledSetting(getComponenetName()) == PackageManager.COMPONENT_ENABLED_STATE_ENABLED || p.getComponentEnabledSetting(getComponenetName()) == PackageManager.COMPONENT_ENABLED_STATE_DEFAULT);
-	}
-
-	private void hideIcon () {
-		getPackageManager().setComponentEnabledSetting(getComponenetName(), FLAG_HIDE, DONT_KILL_APP);
-	}
-
-	private void showIcon () {
-		getPackageManager().setComponentEnabledSetting(getComponenetName(), FLAG_SHOW, DONT_KILL_APP);
-	}
-
-	private ComponentName getComponenetName () {
-		ComponentName c = new ComponentName(this, LauncherActivity.class);
-		return c;
-	}
-
-
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

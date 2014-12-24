@@ -66,14 +66,16 @@ public class WallpaperFragment extends Fragment {
 		if (ab != null) {
 			ab.setDisplayHomeAsUpEnabled(true);
 			ab.setDisplayShowHomeEnabled(false);
-			ab.setDisplayShowTitleEnabled(true);
+			ab.setDisplayShowTitleEnabled(false);
 
+/*
 			final String title = super.getResources().getString(R.string.config_full_screen_wallpaper_title);
 			if (title == null || title.length() <= 0) {
 				ab.setTitle(mNode.name);
 			} else {
 				ab.setTitle(title);
 			}
+*/
 		}
 
 		this.mPending = (ProgressBar) super.getView().findViewById(R.id.pending);
