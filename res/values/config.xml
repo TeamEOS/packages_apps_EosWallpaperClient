@@ -3,7 +3,7 @@
 
     <!-- Customize The URL for the JSON Manifest -->
     <string name="config_wallpaper_manifest_url">
-        https://raw.github.com/Bencodes/Wallpaper-Manager/master/assets/demo-manifest.json
+        http://api.teameos.org/wallpapers/manifest/manifest.json
     </string>
 
     <!-- Configure The External Storage Directory. Don't include sdcard in the path -->
@@ -11,7 +11,7 @@
 
 
     <!-- Enable The Image Tags (i.e. Each Image Has A Name) -->
-    <item format="boolean" type="bool" name="config_enable_image_names">false</item>
+    <item format="boolean" type="bool" name="config_enable_image_names">true</item>
 
 
     <!-- Enable Image Fade (Note: I would not use anything higher than 500) -->
