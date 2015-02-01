@@ -174,7 +174,8 @@ public class WallpaperFragment extends Fragment {
 			outStream.flush();
 			outStream.close();
 
-			super.getActivity().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + dir.toString())));
+			// no-op perm fail on Lollipop
+			// super.getActivity().sendBroadcast(new Intent(Intent.ACTION_MEDIA_MOUNTED, Uri.parse("file://" + dir.toString())));
 			Toast.makeText(getActivity(), "Wallpaper Saved To, " + img.toString() + "!", Toast.LENGTH_LONG).show();
 		} catch (Exception e) {
 			Log.e(TAG, "", e);
