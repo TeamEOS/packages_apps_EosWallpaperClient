@@ -3,7 +3,7 @@
 
     <!-- Customize The URL for the JSON Manifest -->
     <string name="config_wallpaper_manifest_url">
-        http://api.teameos.org/wallpapers/manifest/manifest.json
+        http://walls.teameos.org/manifest/manifest.json
     </string>
 
     <!-- Configure The External Storage Directory. Don't include sdcard in the path -->
